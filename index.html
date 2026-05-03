@@ -1,1267 +1,561 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musika Studio - Jasa Pembuatan Website & Aplikasi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --accent: #0f3460;
-            --highlight: #e94560;
-            --light: #f5f5f5;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--light);
-            color: var(--primary);
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--highlight);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--highlight);
-        }
-
-        .mobile-menu {
-            display: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
-            animation: pulse 15s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--white);
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero h1 span {
-            color: var(--highlight);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--highlight);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: #d63851;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent), var(--highlight));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            color: var(--white);
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Why Choose Us */
-        .why-us {
-            background: var(--primary);
-            padding: 80px 20px;
-            color: var(--white);
-        }
-
-        .why-us-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .why-us .section-title h2 {
-            color: var(--white);
-        }
-
-        .why-us .section-title p {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-item {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .feature-item i {
-            font-size: 2.5rem;
-            color: var(--highlight);
-            margin-bottom: 20px;
-        }
-
-        .feature-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .feature-item p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            height: 250px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .portfolio-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .portfolio-item:hover::before {
-            opacity: 1;
-        }
-
-        .portfolio-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: var(--white);
-            padding: 20px;
-        }
-
-        .portfolio-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .portfolio-content p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Pricing Section */
-        .pricing {
-            background: #f0f0f0;
-            padding: 80px 20px;
-        }
-
-        .pricing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .pricing-card.popular {
-            border: 2px solid var(--highlight);
-            transform: scale(1.05);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--highlight);
-            color: var(--white);
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--highlight);
-            margin: 20px 0;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            color: #666;
-        }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-features li i {
-            color: #2ecc71;
-            margin-right: 10px;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            margin-top: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .contact-item i {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent), var(--highlight));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-item div h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .contact-item div p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--highlight);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            padding: 50px 20px 20px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--highlight);
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: var(--highlight);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--highlight);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
-        }
-
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            transform: scale(0.8);
-            transition: transform 0.3s;
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1);
-        }
-
-        .modal i {
-            font-size: 4rem;
-            color: #2ecc71;
-            margin-bottom: 20px;
-        }
-
-        .modal h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .modal p {
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        /* Scroll to Top */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--highlight);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 999;
-            border: none;
-            font-size: 1.2rem;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            background: #d63851;
-            transform: translateY(-3px);
-        }
-
-        /* Animations on Scroll */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary);
-                flex-direction: column;
-                padding: 20px;
-                gap: 15px;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .pricing-card.popular {
-                transform: scale(1);
-            }
-        }
-
-        /* Loading Spinner */
-        .spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--white);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-left: 10px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musika Studio | Jasa Pembuatan Website & Aplikasi Profesional</title>
+  <meta name="description" content="Solusi digital premium untuk website, aplikasi mobile, UI/UX, dan SEO. Wujudkan ide bisnis Anda bersama Musika Studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #c9a227;
+      --accent-hover: #e6b83a;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass: rgba(11, 15, 25, 0.75);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      --radius: 16px;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.2; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Utility */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 28px; border-radius: 50px; font-weight: 600; cursor: pointer;
+      transition: var(--transition); border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3); }
+    .btn-outline { background: transparent; border-color: var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: rgba(201, 162, 39, 0.1); transform: translateY(-2px); }
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-title h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
+    .section-title p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
+    .gold-line { width: 60px; height: 3px; background: var(--accent); margin: 16px auto 0; border-radius: 2px; }
+
+    /* Reveal Animation */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Navbar */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent; transition: var(--transition);
+      padding: 20px 0;
+    }
+    header.scrolled { background: var(--glass); backdrop-filter: blur(12px); padding: 12px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-weight: 500; font-size: 0.95rem; position: relative; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
+      background: var(--accent); transition: var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+
+    /* Hero */
+    #home {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 20% 30%, rgba(201, 162, 39, 0.15) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(201, 162, 39, 0.1) 0%, transparent 40%);
+      padding: 120px 24px 80px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-content { max-width: 850px; z-index: 2; }
+    .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 24px; }
+    .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .floating-shape {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
+      animation: float 8s ease-in-out infinite;
+    }
+    .shape1 { width: 400px; height: 400px; background: var(--accent); top: 10%; left: -5%; animation-delay: 0s; }
+    .shape2 { width: 300px; height: 300px; background: #4f46e5; bottom: 15%; right: -5%; animation-delay: -3s; }
+    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+
+    /* Cards Grid */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 32px; transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(201, 162, 39, 0.4); box-shadow: var(--shadow); }
+    .card-icon { width: 56px; height: 56px; background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), transparent); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem; color: var(--accent); }
+    .card h3 { font-size: 1.35rem; margin-bottom: 12px; font-family: 'Inter', sans-serif; font-weight: 600; }
+    .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* Portfolio */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .portfolio-item { position: relative; border-radius: var(--radius); overflow: hidden; height: 280px; cursor: pointer; }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .portfolio-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+      opacity: 0; transition: var(--transition);
+    }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay h4 { font-size: 1.2rem; margin-bottom: 6px; }
+    .portfolio-overlay p { font-size: 0.9rem; color: #cbd5e1; }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; align-items: center; }
+    .price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 28px; text-align: center; transition: var(--transition); position: relative; }
+    .price-card.popular { border-color: var(--accent); transform: scale(1.03); box-shadow: 0 10px 40px rgba(201, 162, 39, 0.15); z-index: 2; }
+    .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
+    .price-card h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 8px; }
+    .price { font-size: 2.2rem; font-weight: 700; margin: 16px 0; color: var(--text); }
+    .price span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
+    .features { text-align: left; margin: 24px 0 32px; }
+    .features li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.95rem; }
+    .features li::before { content: '✓'; color: var(--accent); font-weight: bold; }
+
+    /* Contact */
+    #contact { padding: 100px 0; background: #0a0d14; }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contact-info h3 { font-size: 2rem; margin-bottom: 24px; }
+    .info-item { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+    .info-icon { width: 44px; height: 44px; background: rgba(201, 162, 39, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.2rem; flex-shrink: 0; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group.full { grid-column: span 2; }
+    label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+    input, select, textarea {
+      width: 100%; padding: 14px 18px; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-family: inherit; transition: var(--transition);
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2); }
+    textarea { resize: vertical; min-height: 120px; }
+
+    /* Footer */
+    footer { background: #06080d; padding: 60px 0 30px; border-top: 1px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 1.1rem; margin-bottom: 20px; color: var(--text); }
+    .footer-col a { display: block; color: var(--text-muted); margin-bottom: 12px; font-size: 0.95rem; }
+    .footer-col a:hover { color: var(--accent); }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 30px; right: 30px; background: #0f172a; border: 1px solid var(--accent);
+      color: var(--text); padding: 16px 24px; border-radius: 12px; box-shadow: var(--shadow);
+      transform: translateY(100px); opacity: 0; transition: var(--transition); z-index: 1100; display: flex; align-items: center; gap: 12px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast-icon { font-size: 1.4rem; color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: #0b0f19;
+        flex-direction: column; padding: 100px 32px; transition: var(--transition); box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+      }
+      .nav-links.active { right: 0; }
+      .menu-toggle { display: block; color: var(--text); }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .price-card.popular { transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Musika <span>Studio</span></a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#pricing">Harga</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Wujudkan Ide Digital Anda Bersama <span>Musika Studio</span></h1>
-            <p>Jasa pembuatan website profesional dan aplikasi mobile berkualitas tinggi untuk mengembangkan bisnis Anda di era digital.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Mulai Proyek Anda</a>
-                <a href="#services" class="btn btn-secondary">Lihat Layanan</a>
-            </div>
+  <header id="navbar">
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Musika<span>.</span>Studio</a>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Beranda</a>
+          <a href="#services">Layanan</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#pricing">Harga</a>
+          <a href="#contact">Kontak</a>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="section-title animate-on-scroll">
-            <h2>Layanan Kami</h2>
-            <p>Solusi digital lengkap untuk kebutuhan bisnis Anda</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3>Website Development</h3>
-                <p>Pembuatan website company profile, e-commerce, landing page, dan web application dengan desain modern dan responsive.</p>
-            </div>
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Mobile App Development</h3>
-                <p>Pengembangan aplikasi Android dan iOS native maupun hybrid dengan performa optimal dan user experience terbaik.</p>
-            </div>
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon">
-                    <i class="fas fa-paint-brush"></i>
-                </div>
-                <h3>UI/UX Design</h3>
-                <p>Desain antarmuka yang menarik dan pengalaman pengguna yang intuitif untuk website dan aplikasi Anda.</p>
-            </div>
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3>SEO Optimization</h3>
-                <p>Optimasi mesin pencari untuk meningkatkan visibilitas website Anda di Google dan meningkatkan traffic organik.</p>
-            </div>
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h3>Web Hosting & Domain</h3>
-                <p>Layanan hosting cepat dan aman dengan dukungan teknis 24/7 serta registrasi domain untuk bisnis Anda.</p>
-            </div>
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3>Maintenance & Support</h3>
-                <p>Layanan pemeliharaan rutin, update keamanan, dan dukungan teknis untuk menjaga website tetap optimal.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="why-us">
-        <div class="why-us-container">
-            <div class="section-title animate-on-scroll">
-                <h2>Mengapa Memilih Kami?</h2>
-                <p>Keunggulan yang membuat Musika Studio menjadi pilihan tepat untuk proyek digital Anda</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item animate-on-scroll">
-                    <i class="fas fa-rocket"></i>
-                    <h3>Proses Cepat</h3>
-                    <p>Timeline pengerjaan yang efisien tanpa mengorbankan kualitas hasil akhir.</p>
-                </div>
-                <div class="feature-item animate-on-scroll">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Keamanan Terjamin</h3>
-                    <p>Implementasi standar keamanan terbaik untuk melindungi data dan aplikasi Anda.</p>
-                </div>
-                <div class="feature-item animate-on-scroll">
-                    <i class="fas fa-headset"></i>
-                    <h3>Dukungan 24/7</h3>
-                    <p>Tim support siap membantu kapan saja untuk menyelesaikan masalah teknis Anda.</p>
-                </div>
-                <div class="feature-item animate-on-scroll">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <h3>Harga Kompetitif</h3>
-                    <p>Penawaran harga terbaik dengan kualitas premium untuk setiap anggaran bisnis.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="section-title animate-on-scroll">
-            <h2>Portfolio Kami</h2>
-            <p>Beberapa proyek yang telah kami kerjakan untuk klien</p>
-        </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item animate-on-scroll">
-                <div class="portfolio-content">
-                    <h3><i class="fas fa-shopping-cart"></i> E-Commerce Platform</h3>
-                    <p>Website toko online dengan sistem pembayaran terintegrasi dan manajemen produk lengkap.</p>
-                </div>
-            </div>
-            <div class="portfolio-item animate-on-scroll">
-                <div class="portfolio-content">
-                    <h3><i class="fas fa-building"></i> Company Profile</h3>
-                    <p>Website perusahaan profesional dengan desain elegan dan informasi lengkap.</p>
-                </div>
-            </div>
-            <div class="portfolio-item animate-on-scroll">
-                <div class="portfolio-content">
-                    <h3><i class="fas fa-mobile-alt"></i> Mobile Booking App</h3>
-                    <p>Aplikasi pemesanan berbasis Android dan iOS dengan notifikasi real-time.</p>
-                </div>
-            </div>
-            <div class="portfolio-item animate-on-scroll">
-                <div class="portfolio-content">
-                    <h3><i class="fas fa-graduation-cap"></i> E-Learning System</h3>
-                    <p>Platform pembelajaran online dengan video streaming dan quiz interaktif.</p>
-                </div>
-            </div>
-            <div class="portfolio-item animate-on-scroll">
-                <div class="portfolio-content">
-                    <h3><i class="fas fa-hospital"></i> Health Care Portal</h3>
-                    <p>Portal kesehatan dengan sistem janji temu dan rekam medis digital.</p>
-                </div>
-            </div>
-            <div class="portfolio-item animate-on-scroll">
-                <div class="portfolio-content">
-                    <h3><i class="fas fa-utensils"></i> Restaurant App</h3>
-                    <p>Aplikasi pemesanan makanan dengan tracking delivery dan menu digital.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="pricing-container">
-            <div class="section-title animate-on-scroll">
-                <h2>Paket Harga</h2>
-                <p>Pilih paket yang sesuai dengan kebutuhan dan anggaran bisnis Anda</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Starter</h3>
-                    <div class="price">Rp 2.500K <span>/project</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Website 5 Halaman</li>
-                        <li><i class="fas fa-check"></i> Desain Responsive</li>
-                        <li><i class="fas fa-check"></i> SEO Basic</li>
-                        <li><i class="fas fa-check"></i> Free Domain .com (1 Tahun)</li>
-                        <li><i class="fas fa-check"></i> Hosting 1 Tahun</li>
-                        <li><i class="fas fa-check"></i> Revisi 2x</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="selectPackage('Starter')">Pilih Paket</button>
-                </div>
-                <div class="pricing-card popular animate-on-scroll">
-                    <div class="popular-badge">Paling Populer</div>
-                    <h3>Business</h3>
-                    <div class="price">Rp 5.000K <span>/project</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Website 10 Halaman</li>
-                        <li><i class="fas fa-check"></i> Desain Custom Premium</li>
-                        <li><i class="fas fa-check"></i> SEO Advanced</li>
-                        <li><i class="fas fa-check"></i> Free Domain .com (1 Tahun)</li>
-                        <li><i class="fas fa-check"></i> Hosting Premium 1 Tahun</li>
-                        <li><i class="fas fa-check"></i> CMS Admin Panel</li>
-                        <li><i class="fas fa-check"></i> Revisi 5x</li>
-                        <li><i class="fas fa-check"></i> Support 3 Bulan</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="selectPackage('Business')">Pilih Paket</button>
-                </div>
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Enterprise</h3>
-                    <div class="price">Custom <span>/project</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Website Unlimited Halaman</li>
-                        <li><i class="fas fa-check"></i> Aplikasi Mobile (Android/iOS)</li>
-                        <li><i class="fas fa-check"></i> Sistem Custom Complex</li>
-                        <li><i class="fas fa-check"></i> API Integration</li>
-                        <li><i class="fas fa-check"></i> Database Design</li>
-                        <li><i class="fas fa-check"></i> SSL Certificate</li>
-                        <li><i class="fas fa-check"></i> Revisi Unlimited</li>
-                        <li><i class="fas fa-check"></i> Support 1 Tahun</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="selectPackage('Enterprise')">Konsultasi</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="section-title animate-on-scroll">
-            <h2>Hubungi Kami</h2>
-            <p>Siap membantu mewujudkan proyek digital Anda. Hubungi kami sekarang!</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <div class="contact-item animate-on-scroll">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Alamat</h4>
-                        <p>Jl. Imam Bonjol GG 2 No 3<br>Belahantengah, Mojosari<br>Mojokerto, Jawa Timur</p>
-                    </div>
-                </div>
-                <div class="contact-item animate-on-scroll">
-                    <i class="fas fa-phone-alt"></i>
-                    <div>
-                        <h4>Telepon / WhatsApp</h4>
-                        <p><a href="https://wa.me/6282111887939" target="_blank" style="color: var(--highlight);">0821-1188-7939</a></p>
-                    </div>
-                </div>
-                <div class="contact-item animate-on-scroll">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>hardinataraja@gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-item animate-on-scroll">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h4>Jam Operasional</h4>
-                        <p>Senin - Sabtu: 09.00 - 20.00 WIB</p>
-                    </div>
-                </div>
-            </div>
-            <div class="contact-form animate-on-scroll">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nama Lengkap</label>
-                        <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Nomor Telepon</label>
-                        <input type="tel" id="phone" name="phone" placeholder="08xx-xxxx-xxxx">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Layanan yang Diminati</label>
-                        <select id="service" name="service" required>
-                            <option value="">Pilih Layanan</option>
-                            <option value="website">Website Development</option>
-                            <option value="mobile">Mobile App Development</option>
-                            <option value="design">UI/UX Design</option>
-                            <option value="seo">SEO Optimization</option>
-                            <option value="maintenance">Maintenance & Support</option>
-                            <option value="other">Lainnya</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Pesan / Detail Proyek</label>
-                        <textarea id="message" name="message" required placeholder="Ceritakan tentang proyek Anda..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        Kirim Pesan <span class="spinner" id="spinner"></span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Musika Studio</h3>
-                <p>Partner terpercaya untuk solusi digital bisnis Anda. Kami berkomitmen memberikan layanan terbaik dengan hasil berkualitas tinggi.</p>
-                <div class="social-links">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Layanan</h3>
-                <p><a href="#services">Website Development</a></p>
-                <p><a href="#services">Mobile App Development</a></p>
-                <p><a href="#services">UI/UX Design</a></p>
-                <p><a href="#services">SEO Optimization</a></p>
-            </div>
-            <div class="footer-section">
-                <h3>Informasi</h3>
-                <p><a href="#portfolio">Portfolio</a></p>
-                <p><a href="#pricing">Harga</a></p>
-                <p><a href="#contact">Kontak</a></p>
-                <p><a href="#">Blog</a></p>
-            </div>
-            <div class="footer-section">
-                <h3>Kontak</h3>
-                <p>Jl. Imam Bonjol GG 2 No 3<br>Belahantengah, Mojosari<br>Mojokerto, Jawa Timur</p>
-                <p><i class="fas fa-phone" style="margin-right: 8px;"></i> 0821-1188-7939</p>
-                <p><i class="fas fa-envelope" style="margin-right: 8px;"></i> hardinataraja@gmail.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Musika Studio. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal-overlay" id="modal">
-        <div class="modal">
-            <i class="fas fa-check-circle"></i>
-            <h3>Terima Kasih!</h3>
-            <p>Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.</p>
-            <button class="btn btn-primary" onclick="closeModal()">Tutup</button>
-        </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+      </nav>
     </div>
+  </header>
 
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+  <section id="home">
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="hero-content reveal">
+      <h1>Wujudkan Ide Digital Anda Bersama Musika Studio</h1>
+      <p>Jasa pembuatan website profesional dan aplikasi mobile berkualitas tinggi untuk mengembangkan bisnis Anda di era digital.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">Mulai Proyek Anda</a>
+        <a href="#services" class="btn btn-outline">Lihat Layanan</a>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+  <section id="services" style="padding: 100px 0;">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Layanan Kami</h2>
+        <p>Solusi digital lengkap untuk kebutuhan bisnis Anda</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="card-icon">🌐</div>
+          <h3>Website Development</h3>
+          <p>Pembuatan website company profile, e-commerce, landing page, dan web application dengan desain modern dan responsive.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">📱</div>
+          <h3>Mobile App Development</h3>
+          <p>Pengembangan aplikasi Android dan iOS native maupun hybrid dengan performa optimal dan user experience terbaik.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🎨</div>
+          <h3>UI/UX Design</h3>
+          <p>Desain antarmuka yang menarik dan pengalaman pengguna yang intuitif untuk website dan aplikasi Anda.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🔍</div>
+          <h3>SEO Optimization</h3>
+          <p>Optimasi mesin pencari untuk meningkatkan visibilitas website Anda di Google dan meningkatkan traffic organik.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">☁️</div>
+          <h3>Web Hosting & Domain</h3>
+          <p>Layanan hosting cepat dan aman dengan dukungan teknis 24/7 serta registrasi domain untuk bisnis Anda.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🛡️</div>
+          <h3>Maintenance & Support</h3>
+          <p>Layanan pemeliharaan rutin, update keamanan, dan dukungan teknis untuk menjaga website tetap optimal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+  <section id="why-us" style="padding: 80px 0; background: #0d111a;">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Mengapa Memilih Kami?</h2>
+        <p>Keunggulan yang membuat Musika Studio menjadi pilihan tepat untuk proyek digital Anda</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="grid-4">
+        <div class="card reveal">
+          <div class="card-icon">⚡</div>
+          <h3>Proses Cepat</h3>
+          <p>Timeline pengerjaan yang efisien tanpa mengorbankan kualitas hasil akhir.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🔒</div>
+          <h3>Keamanan Terjamin</h3>
+          <p>Implementasi standar keamanan terbaik untuk melindungi data dan aplikasi Anda.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🎧</div>
+          <h3>Dukungan 24/7</h3>
+          <p>Tim support siap membantu kapan saja untuk menyelesaikan masalah teknis Anda.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">💎</div>
+          <h3>Harga Kompetitif</h3>
+          <p>Penawaran harga terbaik dengan kualitas premium untuk setiap anggaran bisnis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+  <section id="portfolio" style="padding: 100px 0;">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Portfolio Kami</h2>
+        <p>Beberapa proyek yang telah kami kerjakan untuk klien</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal">
+          <img src="https://placehold.co/600x400/111827/c9a227?text=E-Commerce" alt="E-Commerce Platform">
+          <div class="portfolio-overlay">
+            <h4>E-Commerce Platform</h4>
+            <p>Website toko online dengan sistem pembayaran terintegrasi dan manajemen produk lengkap.</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://placehold.co/600x400/111827/c9a227?text=Company+Profile" alt="Company Profile">
+          <div class="portfolio-overlay">
+            <h4>Company Profile</h4>
+            <p>Website perusahaan profesional dengan desain elegan dan informasi lengkap.</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://placehold.co/600x400/111827/c9a227?text=Mobile+Booking" alt="Mobile Booking App">
+          <div class="portfolio-overlay">
+            <h4>Mobile Booking App</h4>
+            <p>Aplikasi pemesanan berbasis Android dan iOS dengan notifikasi real-time.</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://placehold.co/600x400/111827/c9a227?text=E-Learning" alt="E-Learning System">
+          <div class="portfolio-overlay">
+            <h4>E-Learning System</h4>
+            <p>Platform pembelajaran online dengan video streaming dan quiz interaktif.</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://placehold.co/600x400/111827/c9a227?text=Health+Care" alt="Health Care Portal">
+          <div class="portfolio-overlay">
+            <h4>Health Care Portal</h4>
+            <p>Portal kesehatan dengan sistem janji temu dan rekam medis digital.</p>
+          </div>
+        </div>
+        <div class="portfolio-item reveal">
+          <img src="https://placehold.co/600x400/111827/c9a227?text=Restaurant+App" alt="Restaurant App">
+          <div class="portfolio-overlay">
+            <h4>Restaurant App</h4>
+            <p>Aplikasi pemesanan makanan dengan tracking delivery dan menu digital.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.style.padding = '10px 0';
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                navbar.style.padding = '15px 0';
-                navbar.style.boxShadow = 'none';
-            }
-        });
+  <section id="pricing" style="padding: 100px 0; background: #0d111a;">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Paket Harga</h2>
+        <p>Pilih paket yang sesuai dengan kebutuhan dan anggaran bisnis Anda</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <h3>Starter</h3>
+          <div class="price">Rp 2.500K <span>/project</span></div>
+          <ul class="features">
+            <li>Website 5 Halaman</li>
+            <li>Desain Responsive</li>
+            <li>SEO Basic</li>
+            <li>Free Domain .com (1 Tahun)</li>
+            <li>Hosting 1 Tahun</li>
+            <li>Revisi 2x</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width: 100%;">Pilih Paket</a>
+        </div>
+        <div class="price-card popular reveal">
+          <div class="popular-badge">PALING POPULER</div>
+          <h3>Business</h3>
+          <div class="price">Rp 5.000K <span>/project</span></div>
+          <ul class="features">
+            <li>Website 10 Halaman</li>
+            <li>Desain Custom Premium</li>
+            <li>SEO Advanced</li>
+            <li>Free Domain .com (1 Tahun)</li>
+            <li>Hosting Premium 1 Tahun</li>
+            <li>CMS Admin Panel</li>
+            <li>Revisi 5x</li>
+            <li>Support 3 Bulan</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width: 100%;">Pilih Paket</a>
+        </div>
+        <div class="price-card reveal">
+          <h3>Enterprise</h3>
+          <div class="price">Custom <span>/project</span></div>
+          <ul class="features">
+            <li>Website Unlimited Halaman</li>
+            <li>Aplikasi Mobile (Android/iOS)</li>
+            <li>Sistem Custom Complex</li>
+            <li>API Integration</li>
+            <li>Database Design</li>
+            <li>SSL Certificate</li>
+            <li>Revisi Unlimited</li>
+            <li>Support 1 Tahun</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline" style="width: 100%;">Konsultasi</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <section id="contact" style="padding: 100px 0;">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info reveal">
+          <h3>Hubungi Kami</h3>
+          <p style="color: var(--text-muted); margin-bottom: 32px;">Siap membantu mewujudkan proyek digital Anda. Hubungi kami sekarang!</p>
+          
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Alamat</h4>
+              <p style="color: var(--text-muted);">Jl. Imam Bonjol GG 2 No 3, Belahantengah, Mojosari, Mojokerto, Jawa Timur</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Telepon / WhatsApp</h4>
+              <a href="https://wa.me/6282111887939" target="_blank" style="color: var(--accent);">0821-1188-7939</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div>
+              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Email</h4>
+              <a href="mailto:hardinataraja@gmail.com" style="color: var(--text);">hardinataraja@gmail.com</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🕒</div>
+            <div>
+              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Jam Operasional</h4>
+              <p style="color: var(--text-muted);">Senin - Sabtu: 09.00 - 20.00 WIB</p>
+            </div>
+          </div>
+        </div>
 
-        // Scroll to top button
-        const scrollTopBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
-        });
+        <form id="contactForm" class="reveal">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input type="text" id="name" required placeholder="Nama Anda">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required placeholder="email@domain.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Nomor Telepon</label>
+              <input type="tel" id="phone" placeholder="08xx-xxxx-xxxx">
+            </div>
+            <div class="form-group">
+              <label for="service">Layanan yang Diminati</label>
+              <select id="service">
+                <option value="Website Development">Website Development</option>
+                <option value="Mobile App Development">Mobile App Development</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="SEO Optimization">SEO Optimization</option>
+                <option value="Maintenance & Support">Maintenance & Support</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="message">Pesan / Detail Proyek</label>
+              <textarea id="message" rows="5" placeholder="Ceritakan kebutuhan proyek Anda..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#" class="logo" style="margin-bottom: 16px; display: block;">Musika<span>.</span>Studio</a>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Partner terpercaya untuk solusi digital bisnis Anda. Kami berkomitmen memberikan layanan terbaik dengan hasil berkualitas tinggi.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Layanan</h4>
+          <a href="#services">Website Development</a>
+          <a href="#services">Mobile App Development</a>
+          <a href="#services">UI/UX Design</a>
+          <a href="#services">SEO Optimization</a>
+        </div>
+        <div class="footer-col">
+          <h4>Informasi</h4>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#pricing">Harga</a>
+          <a href="#contact">Kontak</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <p style="color: var(--text-muted); margin-bottom: 12px;">Jl. Imam Bonjol GG 2 No 3<br>Belahantengah, Mojosari<br>Mojokerto, Jawa Timur</p>
+          <p style="color: var(--text);">0821-1188-7939</p>
+          <p style="color: var(--text);">hardinataraja@gmail.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2024 Musika Studio. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    <span class="toast-icon">✅</span>
+    <div>
+      <strong>Terima Kasih!</strong>
+      <p style="margin: 4px 0 0; font-size: 0.9rem; color: #cbd5e1;">Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.</p>
+    </div>
+  </div>
+
+  <script>
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('active');
         }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
 
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Contact Form
-        const contactForm = document.getElementById('contactForm');
-        const spinner = document.getElementById('spinner');
-        const modal = document.getElementById('modal');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Show spinner
-            spinner.style.display = 'inline-block';
-
-            // Simulate form submission
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                modal.classList.add('active');
-                contactForm.reset();
-            }, 1500);
-        });
-
-        function closeModal() {
-            modal.classList.remove('active');
-        }
-
-        // Close modal when clicking outside
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Select package function
-        function selectPackage(packageName) {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-
-            // Pre-select service based on package
-            const serviceSelect = document.getElementById('service');
-            if (packageName === 'Enterprise') {
-                serviceSelect.value = 'other';
-            } else {
-                serviceSelect.value = 'website';
-            }
-
-            // Add package info to message
-            const messageField = document.getElementById('message');
-            messageField.value = `Saya tertarik dengan paket ${packageName}. 
-
-Detail proyek saya: `;
-            messageField.focus();
-        }
-
-        // Add typing effect to hero title
-        const heroTitle = document.querySelector('.hero h1');
-        const originalText = heroTitle.innerHTML;
-
-        // Counter animation for stats (if added later)
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-
-            function updateCounter() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target;
-                }
-            }
-
-            updateCounter();
-        }
-
-        // Parallax effect for hero
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
-
-        // Add hover effect to service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Current year in footer
-        document.querySelector('.footer-bottom p').innerHTML = 
-            `&copy; ${new Date().getFullYear()} Musika Studio. All rights reserved.`;
-    </script>
+    // Form Submission Mock
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      e.target.reset();
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    });
+  </script>
 </body>
 </html>
+
