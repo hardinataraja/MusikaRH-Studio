@@ -466,7 +466,7 @@
               <textarea id="message" rows="5" placeholder="Ceritakan kebutuhan proyek Anda..."></textarea>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Kirim Pesan</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Kirim ke WhatsApp</button>
         </form>
       </div>
     </div>
@@ -509,8 +509,8 @@
   <div class="toast" id="toast">
     <span class="toast-icon">✅</span>
     <div>
-      <strong>Terima Kasih!</strong>
-      <p style="margin: 4px 0 0; font-size: 0.9rem; color: #cbd5e1;">Pesan Anda telah terkirim. Tim kami akan segera menghubungi Anda.</p>
+      <strong>Mengalihkan ke WhatsApp...</strong>
+      <p style="margin: 4px 0 0; font-size: 0.9rem; color: #cbd5e1;">Pesan Anda siap dikirim. Chat akan terbuka otomatis.</p>
     </div>
   </div>
 
@@ -547,13 +547,43 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll);
 
-    // Form Submission Mock
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+    // WhatsApp Integration Form Handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !email) {
+        alert('Harap isi nama dan email Anda.');
+        return;
+      }
+      
+      // Format pesan WhatsApp
+      const waMessage = `Halo Musika Studio, saya ingin konsultasi proyek.\n\n` +
+                        `👤 *Nama:* ${name}\n` +
+                        `📧 *Email:* ${email}\n` +
+                        `📱 *No. HP:* ${phone || '-'}\n` +
+                        `💼 *Layanan:* ${service}\n` +
+                        `📝 *Detail Proyek:* ${message || '-'}\n\n` +
+                        `Terima kasih, saya tunggu responsnya.`;
+                        
+      const phoneNumber = '6282111887939'; // Nomor WhatsApp tujuan
+      const waURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waMessage)}`;
+      
+      // Tampilkan toast
       const toast = document.getElementById('toast');
       toast.classList.add('show');
-      e.target.reset();
-      setTimeout(() => toast.classList.remove('show'), 4000);
+      
+      // Buka WhatsApp setelah 1.5 detik
+      setTimeout(() => {
+        window.open(waURL, '_blank');
+        toast.classList.remove('show');
+        e.target.reset();
+      }, 1500);
     });
   </script>
 </body>
