@@ -1,591 +1,1290 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Musika RH Studio | Jasa Pembuatan Website & Aplikasi Profesional</title>
-  <meta name="description" content="Solusi digital premium untuk website, aplikasi mobile, UI/UX, dan SEO. Wujudkan ide bisnis Anda bersama Musika Studio.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b0f19;
-      --bg-card: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --accent: #c9a227;
-      --accent-hover: #e6b83a;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --glass: rgba(11, 15, 25, 0.75);
-      --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-      --radius: 16px;
-      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Musika RH Studio | Sistem Bisnis & Website Premium untuk UMKM</title>
+<meta name="description" content="Musika RH Studio — jasa pembuatan website, sistem POS, dan aplikasi bisnis custom. Digawangi langsung oleh developer berpengalaman. Berbasis di Mojokerto, Jawa Timur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0C0E;
+    --surface:#131519;
+    --surface-2:#181B20;
+    --ivory:#F5F1E8;
+    --ivory-dim:#B8B3A8;
+    --grey:#8A8378;
+    --gold:#C9A227;
+    --gold-bright:#E0BC4A;
+    --border:#26292F;
+    --border-bright:#3A3D44;
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.2; }
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
 
-    /* Utility */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      padding: 14px 28px; border-radius: 50px; font-weight: 600; cursor: pointer;
-      transition: var(--transition); border: 2px solid transparent;
-    }
-    .btn-primary { background: var(--accent); color: #000; }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3); }
-    .btn-outline { background: transparent; border-color: var(--accent); color: var(--accent); }
-    .btn-outline:hover { background: rgba(201, 162, 39, 0.1); transform: translateY(-2px); }
-    .section-title { text-align: center; margin-bottom: 60px; }
-    .section-title h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
-    .section-title p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.05rem; }
-    .gold-line { width: 60px; height: 3px; background: var(--accent); margin: 16px auto 0; border-radius: 2px; }
+    --max: 1180px;
+  }
 
-    /* Reveal Animation */
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
 
-    /* Navbar */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: transparent; transition: var(--transition);
-      padding: 20px 0;
-    }
-    header.scrolled { background: var(--glass); backdrop-filter: blur(12px); padding: 12px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    nav { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { font-weight: 500; font-size: 0.95rem; position: relative; }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
-      background: var(--accent); transition: var(--transition);
-    }
-    .nav-links a:hover::after { width: 100%; }
-    .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+  body{
+    background:var(--bg);
+    color:var(--ivory);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-    /* Hero */
-    #home {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      background: radial-gradient(circle at 20% 30%, rgba(201, 162, 39, 0.15) 0%, transparent 40%),
-                  radial-gradient(circle at 80% 70%, rgba(201, 162, 39, 0.1) 0%, transparent 40%);
-      padding: 120px 24px 80px; text-align: center; position: relative; overflow: hidden;
-    }
-    .hero-content { max-width: 850px; z-index: 2; }
-    .hero-content h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 24px; }
-    .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .floating-shape {
-      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
-      animation: float 8s ease-in-out infinite;
-    }
-    .shape1 { width: 400px; height: 400px; background: var(--accent); top: 10%; left: -5%; animation-delay: 0s; }
-    .shape2 { width: 300px; height: 300px; background: #4f46e5; bottom: 15%; right: -5%; animation-delay: -3s; }
-    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+  /* subtle film grain / vignette for richness */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,162,39,0.08), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(201,162,39,0.04), transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
 
-    /* Cards Grid */
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
-    .card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 32px; transition: var(--transition); position: relative; overflow: hidden;
-    }
-    .card:hover { transform: translateY(-6px); border-color: rgba(201, 162, 39, 0.4); box-shadow: var(--shadow); }
-    .card-icon { width: 56px; height: 56px; background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), transparent); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem; color: var(--accent); }
-    .card h3 { font-size: 1.35rem; margin-bottom: 12px; font-family: 'Inter', sans-serif; font-weight: 600; }
-    .card p { color: var(--text-muted); font-size: 0.95rem; }
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
 
-    /* Portfolio */
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .portfolio-item { position: relative; border-radius: var(--radius); overflow: hidden; height: 280px; cursor: pointer; }
-    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-    .portfolio-overlay {
-      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
-      opacity: 0; transition: var(--transition);
-    }
-    .portfolio-item:hover img { transform: scale(1.05); }
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-    .portfolio-overlay h4 { font-size: 1.2rem; margin-bottom: 6px; }
-    .portfolio-overlay p { font-size: 0.9rem; color: #cbd5e1; }
+  ::selection{background:var(--gold); color:var(--bg);}
 
-    /* Pricing */
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; align-items: center; }
-    .price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 28px; text-align: center; transition: var(--transition); position: relative; }
-    .price-card.popular { border-color: var(--accent); transform: scale(1.03); box-shadow: 0 10px 40px rgba(201, 162, 39, 0.15); z-index: 2; }
-    .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
-    .price-card h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 8px; }
-    .price { font-size: 2.2rem; font-weight: 700; margin: 16px 0; color: var(--text); }
-    .price span { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; }
-    .features { text-align: left; margin: 24px 0 32px; }
-    .features li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-size: 0.95rem; }
-    .features li::before { content: '✓'; color: var(--accent); font-weight: bold; }
+  :focus-visible{
+    outline:1.5px solid var(--gold);
+    outline-offset:3px;
+  }
 
-    /* Contact */
-    #contact { padding: 100px 0; background: #0a0d14; }
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
-    .contact-info h3 { font-size: 2rem; margin-bottom: 24px; }
-    .info-item { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
-    .info-icon { width: 44px; height: 44px; background: rgba(201, 162, 39, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.2rem; flex-shrink: 0; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group.full { grid-column: span 2; }
-    label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
-    input, select, textarea {
-      width: 100%; padding: 14px 18px; background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 10px; color: var(--text); font-family: inherit; transition: var(--transition);
-    }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2); }
-    textarea { resize: vertical; min-height: 120px; }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+  }
 
-    /* Footer */
-    footer { background: #06080d; padding: 60px 0 30px; border-top: 1px solid var(--border); }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-col h4 { font-family: 'Inter', sans-serif; font-size: 1.1rem; margin-bottom: 20px; color: var(--text); }
-    .footer-col a { display: block; color: var(--text-muted); margin-bottom: 12px; font-size: 0.95rem; }
-    .footer-col a:hover { color: var(--accent); }
-    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem; }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
 
-    /* Toast */
-    .toast {
-      position: fixed; bottom: 30px; right: 30px; background: #0f172a; border: 1px solid var(--accent);
-      color: var(--text); padding: 16px 24px; border-radius: 12px; box-shadow: var(--shadow);
-      transform: translateY(100px); opacity: 0; transition: var(--transition); z-index: 1100; display: flex; align-items: center; gap: 12px;
-    }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .toast-icon { font-size: 1.4rem; color: var(--accent); }
+  h1,h2,h3,h4{
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--ivory);
+  }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .contact-wrapper { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: #0b0f19;
-        flex-direction: column; padding: 100px 32px; transition: var(--transition); box-shadow: -5px 0 20px rgba(0,0,0,0.5);
-      }
-      .nav-links.active { right: 0; }
-      .menu-toggle { display: block; color: var(--text); }
-      .form-grid { grid-template-columns: 1fr; }
-      .form-group.full { grid-column: span 1; }
-      .price-card.popular { transform: scale(1); }
-    }
-  </style>
+  .section{
+    position:relative;
+    padding:120px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .section-index{
+    position:absolute;
+    left:0;
+    top:120px;
+    writing-mode:vertical-rl;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--grey);
+    text-transform:uppercase;
+    display:none;
+  }
+  @media(min-width:1280px){
+    .section-index{ display:block; left:calc((100% - var(--max))/2 - 50px); }
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.04em;
+    padding:15px 30px;
+    border-radius:2px;
+    transition:all .35s cubic-bezier(.2,.8,.2,1);
+    cursor:pointer;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-gold{
+    background:var(--gold);
+    color:#16140A;
+    font-weight:500;
+  }
+  .btn-gold:hover{
+    background:var(--gold-bright);
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px -10px rgba(201,162,39,.45);
+  }
+  .btn-ghost{
+    border-color:var(--border-bright);
+    color:var(--ivory);
+  }
+  .btn-ghost:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .btn-disabled{
+    border:1px dashed var(--border-bright);
+    color:var(--grey);
+    cursor:not-allowed;
+    opacity:.6;
+  }
+  .btn-sm{
+    font-size:11px;
+    padding:10px 18px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(11,12,14,0.72);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:22px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:19px;
+    letter-spacing:0.01em;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .logo span{
+    color:var(--gold);
+    font-style:italic;
+  }
+  .nav-links{
+    display:flex;
+    gap:36px;
+    font-size:13px;
+    color:var(--ivory-dim);
+  }
+  .nav-links a{ transition:color .25s; position:relative; }
+  .nav-links a:hover{ color:var(--gold); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--ivory); font-size:22px; cursor:pointer; }
+
+  @media(max-width:860px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:160px 0 100px;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:60px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+  }
+  .hero h1{
+    font-size:clamp(40px, 5.4vw, 68px);
+    line-height:1.08;
+    margin:22px 0 26px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+  }
+  .hero p.lead{
+    font-size:17px;
+    color:var(--ivory-dim);
+    max-width:480px;
+    margin-bottom:38px;
+  }
+  .hero-cta{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:46px;
+  }
+  .trust-line{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--grey);
+    letter-spacing:0.03em;
+  }
+  .trust-line strong{ color:var(--ivory-dim); font-weight:500; }
+
+  .hero-panel{
+    position:relative;
+    border:1px solid var(--border-bright);
+    background:linear-gradient(160deg, var(--surface), var(--surface-2));
+    padding:34px;
+    border-radius:4px;
+  }
+  .hero-panel::before{
+    content:"";
+    position:absolute;
+    top:-1px; left:-1px;
+    width:42px; height:42px;
+    border-top:1px solid var(--gold);
+    border-left:1px solid var(--gold);
+  }
+  .hero-panel::after{
+    content:"";
+    position:absolute;
+    bottom:-1px; right:-1px;
+    width:42px; height:42px;
+    border-bottom:1px solid var(--gold);
+    border-right:1px solid var(--gold);
+  }
+  .hero-stat-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+    margin-bottom:26px;
+  }
+  .hero-stat .num{
+    font-family:var(--serif);
+    font-size:34px;
+    color:var(--gold);
+  }
+  .hero-stat .lbl{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--grey);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+  .hero-divider{ height:1px; background:var(--border); margin:24px 0; }
+  .hero-quote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:15.5px;
+    color:var(--ivory-dim);
+    line-height:1.7;
+  }
+  .hero-quote span{ color:var(--gold); }
+
+  /* ---------- generic section heading ---------- */
+  .head-block{
+    max-width:640px;
+    margin-bottom:64px;
+  }
+  .head-block h2{
+    font-size:clamp(28px,3.4vw,40px);
+    margin-top:18px;
+  }
+  .head-block p{
+    color:var(--ivory-dim);
+    margin-top:16px;
+    font-size:15.5px;
+    max-width:520px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+  }
+  @media(max-width:900px){ .svc-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:600px){ .svc-grid{ grid-template-columns:1fr; } }
+
+  .svc-card{
+    background:var(--bg);
+    padding:38px 30px;
+    transition:background .35s;
+  }
+  .svc-card:hover{ background:var(--surface); }
+  .svc-num{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--grey);
+  }
+  .svc-card h3{
+    font-size:19px;
+    margin:18px 0 10px;
+    font-weight:500;
+  }
+  .svc-card p{
+    font-size:14px;
+    color:var(--ivory-dim);
+  }
+
+  /* ---------- WHY ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+  }
+  @media(max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-card{
+    background:var(--bg);
+    padding:42px;
+  }
+  .why-card h3{
+    font-size:20px;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .why-card h3::before{
+    content:"";
+    width:7px;height:7px;
+    background:var(--gold);
+    transform:rotate(45deg);
+    flex-shrink:0;
+  }
+  .why-card p{ color:var(--ivory-dim); font-size:14.5px; }
+
+  /* ---------- PORTFOLIO ---------- */
+  .cat-card{
+    border:1px solid var(--border);
+    margin-bottom:24px;
+    background:var(--surface);
+    transition:border-color .35s;
+  }
+  .cat-card:hover{ border-color:var(--border-bright); }
+  .cat-head{
+    padding:30px 34px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--border);
+  }
+  .cat-head h3{
+    font-size:23px;
+    margin-bottom:8px;
+  }
+  .cat-head p{ color:var(--ivory-dim); font-size:14px; max-width:480px; }
+  .cat-tag{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+    display:block;
+  }
+
+  .proj-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  }
+  .proj-item{
+    padding:24px 34px;
+    border-top:1px solid var(--border);
+    display:flex;
+    flex-direction:row;
+    gap:16px;
+  }
+  .proj-thumb{
+    width:56px;
+    height:56px;
+    flex-shrink:0;
+    border:1px solid var(--border-bright);
+    border-radius:3px;
+    overflow:hidden;
+    position:relative;
+    background:var(--surface-2);
+  }
+  .proj-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(20%) contrast(1.05);
+  }
+  .proj-thumb.placeholder{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    color:var(--gold);
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+  }
+  .proj-body{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex:1;
+    min-width:0;
+  }
+  .proj-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+  }
+  .proj-item h4{
+    font-size:15.5px;
+    font-weight:500;
+    font-family:var(--sans);
+    color:var(--ivory);
+  }
+  .proj-badge{
+    font-family:var(--mono);
+    font-size:9.5px;
+    color:var(--grey);
+    border:1px solid var(--border-bright);
+    padding:3px 8px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .proj-badge.dev{ color:var(--gold); border-color:rgba(201,162,39,.4); }
+  .proj-desc{ font-size:13px; color:var(--ivory-dim); line-height:1.55; }
+  .proj-link{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ivory-dim);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:4px;
+    transition:color .25s, gap .25s;
+    width:fit-content;
+  }
+  .proj-link:hover{ color:var(--gold); gap:10px; }
+  .proj-link.disabled{ color:var(--grey); cursor:not-allowed; }
+
+  .cat-tech{
+    padding:18px 34px 28px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    border-top:1px solid var(--border);
+  }
+  .tech-pill{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--ivory-dim);
+    border:1px solid var(--border-bright);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+
+  /* ---------- FOUNDER ---------- */
+  .founder{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media(max-width:800px){ .founder{ grid-template-columns:1fr; } }
+  .founder-photo{
+    position:relative;
+    border:1px solid var(--border-bright);
+    padding:14px;
+  }
+  .founder-photo img{
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    filter:grayscale(35%) contrast(1.05);
+  }
+  .founder-photo .tag{
+    position:absolute;
+    bottom:-14px; left:14px;
+    background:var(--gold);
+    color:#16140A;
+    font-family:var(--mono);
+    font-size:10.5px;
+    padding:7px 14px;
+    letter-spacing:.04em;
+  }
+  .founder-text h2{
+    font-size:clamp(26px,3vw,34px);
+    margin-bottom:20px;
+  }
+  .founder-text p{
+    color:var(--ivory-dim);
+    font-size:15.5px;
+    margin-bottom:18px;
+    max-width:580px;
+  }
+  .founder-stats{
+    display:flex;
+    gap:40px;
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+  .founder-stats .num{
+    font-family:var(--serif);
+    font-size:30px;
+    color:var(--gold);
+  }
+  .founder-stats .lbl{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--grey);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-top:2px;
+  }
+
+  /* ---------- PRICING ---------- */
+  .price-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  @media(max-width:1080px){ .price-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:600px){ .price-grid{ grid-template-columns:1fr; } }
+
+  .price-card{
+    border:1px solid var(--border);
+    padding:34px 28px;
+    display:flex;
+    flex-direction:column;
+    background:var(--surface);
+    position:relative;
+    transition:transform .35s, border-color .35s;
+  }
+  .price-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+  }
+  .price-card.popular{
+    border-color:var(--gold);
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+  }
+  .popular-flag{
+    position:absolute;
+    top:-1px; right:-1px;
+    background:var(--gold);
+    color:#16140A;
+    font-family:var(--mono);
+    font-size:9.5px;
+    letter-spacing:.06em;
+    padding:6px 12px;
+  }
+  .price-card h3{
+    font-size:16px;
+    font-family:var(--sans);
+    font-weight:600;
+    color:var(--ivory-dim);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    margin-bottom:14px;
+  }
+  .price-card .price{
+    font-family:var(--serif);
+    font-size:30px;
+    color:var(--gold);
+    margin-bottom:4px;
+  }
+  .price-card .price small{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--grey);
+  }
+  .price-feats{
+    margin:24px 0 30px;
+    flex-grow:1;
+  }
+  .price-feats li{
+    font-size:13px;
+    color:var(--ivory-dim);
+    padding:9px 0;
+    border-top:1px solid var(--border);
+    display:flex;
+    gap:10px;
+  }
+  .price-feats li:first-child{ border-top:none; }
+  .price-feats li::before{
+    content:"—";
+    color:var(--gold);
+    flex-shrink:0;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+  }
+  @media(max-width:900px){ .contact-grid{ grid-template-columns:1fr; gap:50px; } }
+  .info-row{
+    display:flex;
+    gap:18px;
+    padding:20px 0;
+    border-top:1px solid var(--border);
+  }
+  .info-row:last-child{ border-bottom:1px solid var(--border); }
+  .info-icon{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--gold);
+    width:24px;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .info-row h4{
+    font-family:var(--sans);
+    font-size:13.5px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:var(--ivory);
+    margin-bottom:4px;
+  }
+  .info-row p, .info-row a{ font-size:14px; color:var(--ivory-dim); }
+  .info-row a:hover{ color:var(--gold); }
+
+  .form-field{ margin-bottom:18px; }
+  .form-field label{
+    display:block;
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--grey);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:8px;
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea{
+    width:100%;
+    background:var(--surface);
+    border:1px solid var(--border-bright);
+    color:var(--ivory);
+    padding:13px 16px;
+    font-family:var(--sans);
+    font-size:14px;
+    border-radius:2px;
+    transition:border-color .25s;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+  }
+  .form-field textarea{ resize:vertical; min-height:100px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:60px 0 40px; }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:28px;
+  }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--grey);
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
 </head>
 <body>
 
-  <header id="navbar">
-    <div class="container">
-      <nav>
-        <a href="#" class="logo">Musika RH<span>.</span>Studio</a>
-        <div class="nav-links" id="navLinks">
-          <a href="#home">Beranda</a>
-          <a href="#services">Layanan</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#pricing">Harga</a>
-          <a href="#contact">Kontak</a>
-        </div>
-        <div class="menu-toggle" id="menuToggle">☰</div>
-      </nav>
+<header>
+  <nav>
+    <a href="#" class="logo">Musika <span>RH</span> Studio</a>
+    <div class="nav-links">
+      <a href="#layanan">Layanan</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#founder">Tentang</a>
+      <a href="#harga">Harga</a>
+      <a href="#kontak">Kontak</a>
     </div>
-  </header>
+    <a href="https://wa.me/6282111887939" class="btn btn-gold btn-sm" style="display:none" id="navCta">Hubungi</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
 
-  <section id="home">
-    <div class="floating-shape shape1"></div>
-    <div class="floating-shape shape2"></div>
-    <div class="hero-content reveal">
-      <h1>Wujudkan Ide Digital Anda Bersama Musika RH Studio</h1>
-      <p>Jasa pembuatan website profesional dan aplikasi mobile berkualitas tinggi untuk mengembangkan bisnis Anda di era digital.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">Mulai Proyek Anda</a>
-        <a href="#services" class="btn btn-outline">Lihat Layanan</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" style="padding: 100px 0;">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Layanan Kami</h2>
-        <p>Solusi digital lengkap untuk kebutuhan bisnis Anda</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="grid-3">
-        <div class="card reveal">
-          <div class="card-icon">🌐</div>
-          <h3>Website Development</h3>
-          <p>Pembuatan website company profile, e-commerce, landing page, dan web application dengan desain modern dan responsive.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">📱</div>
-          <h3>Mobile App Development</h3>
-          <p>Pengembangan aplikasi Android dan iOS native maupun hybrid dengan performa optimal dan user experience terbaik.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">🎨</div>
-          <h3>UI/UX Design</h3>
-          <p>Desain antarmuka yang menarik dan pengalaman pengguna yang intuitif untuk website dan aplikasi Anda.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">🔍</div>
-          <h3>SEO Optimization</h3>
-          <p>Optimasi mesin pencari untuk meningkatkan visibilitas website Anda di Google dan meningkatkan traffic organik.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">☁️</div>
-          <h3>Web Hosting & Domain</h3>
-          <p>Layanan hosting cepat dan aman dengan dukungan teknis 24/7 serta registrasi domain untuk bisnis Anda.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">🛡️</div>
-          <h3>Maintenance & Support</h3>
-          <p>Layanan pemeliharaan rutin, update keamanan, dan dukungan teknis untuk menjaga website tetap optimal.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="why-us" style="padding: 80px 0; background: #0d111a;">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Mengapa Memilih Kami?</h2>
-        <p>Keunggulan yang membuat Musika RH Studio menjadi pilihan tepat untuk proyek digital Anda</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="grid-4">
-        <div class="card reveal">
-          <div class="card-icon">⚡</div>
-          <h3>Proses Cepat</h3>
-          <p>Timeline pengerjaan yang efisien tanpa mengorbankan kualitas hasil akhir.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">🔒</div>
-          <h3>Keamanan Terjamin</h3>
-          <p>Implementasi standar keamanan terbaik untuk melindungi data dan aplikasi Anda.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">🎧</div>
-          <h3>Dukungan 24/7</h3>
-          <p>Tim support siap membantu kapan saja untuk menyelesaikan masalah teknis Anda.</p>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon">💎</div>
-          <h3>Harga Kompetitif</h3>
-          <p>Penawaran harga terbaik dengan kualitas premium untuk setiap anggaran bisnis.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio" style="padding: 100px 0;">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Portfolio Kami</h2>
-        <p>Beberapa proyek yang telah kami kerjakan untuk klien</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="portfolio-grid">
-        <div class="portfolio-item reveal">
-          <img src="https://placehold.co/600x400/111827/c9a227?text=E-Commerce" alt="E-Commerce Platform">
-          <div class="portfolio-overlay">
-            <h4>E-Commerce Platform</h4>
-            <p>Website toko online dengan sistem pembayaran terintegrasi dan manajemen produk lengkap.</p>
-          </div>
-        </div>
-        <div class="portfolio-item reveal">
-          <img src="https://placehold.co/600x400/111827/c9a227?text=Company+Profile" alt="Company Profile">
-          <div class="portfolio-overlay">
-            <h4>Company Profile</h4>
-            <p>Website perusahaan profesional dengan desain elegan dan informasi lengkap.</p>
-          </div>
-        </div>
-        <div class="portfolio-item reveal">
-          <img src="https://placehold.co/600x400/111827/c9a227?text=Mobile+Booking" alt="Mobile Booking App">
-          <div class="portfolio-overlay">
-            <h4>Mobile Booking App</h4>
-            <p>Aplikasi pemesanan berbasis Android dan iOS dengan notifikasi real-time.</p>
-          </div>
-        </div>
-        <div class="portfolio-item reveal">
-          <img src="https://placehold.co/600x400/111827/c9a227?text=E-Learning" alt="E-Learning System">
-          <div class="portfolio-overlay">
-            <h4>E-Learning System</h4>
-            <p>Platform pembelajaran online dengan video streaming dan quiz interaktif.</p>
-          </div>
-        </div>
-        <div class="portfolio-item reveal">
-          <img src="https://placehold.co/600x400/111827/c9a227?text=Health+Care" alt="Health Care Portal">
-          <div class="portfolio-overlay">
-            <h4>Health Care Portal</h4>
-            <p>Portal kesehatan dengan sistem janji temu dan rekam medis digital.</p>
-          </div>
-        </div>
-        <div class="portfolio-item reveal">
-          <img src="https://placehold.co/600x400/111827/c9a227?text=Restaurant+App" alt="Restaurant App">
-          <div class="portfolio-overlay">
-            <h4>Restaurant App</h4>
-            <p>Aplikasi pemesanan makanan dengan tracking delivery dan menu digital.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" style="padding: 100px 0; background: #0d111a;">
-    <div class="container">
-      <div class="section-title reveal">
-        <h2>Paket Harga</h2>
-        <p>Pilih paket yang sesuai dengan kebutuhan dan anggaran bisnis Anda</p>
-        <div class="gold-line"></div>
-      </div>
-      <div class="pricing-grid">
-        <div class="price-card reveal">
-          <h3>Starter</h3>
-          <div class="price">Rp 2.500K <span>/project</span></div>
-          <ul class="features">
-            <li>Website 5 Halaman</li>
-            <li>Desain Responsive</li>
-            <li>SEO Basic</li>
-            <li>Free Domain .com (1 Tahun)</li>
-            <li>Hosting 1 Tahun</li>
-            <li>Revisi 2x</li>
-          </ul>
-          <a href="#contact" class="btn btn-outline" style="width: 100%;">Pilih Paket</a>
-        </div>
-        <div class="price-card popular reveal">
-          <div class="popular-badge">PALING POPULER</div>
-          <h3>Business</h3>
-          <div class="price">Rp 5.000K <span>/project</span></div>
-          <ul class="features">
-            <li>Website 10 Halaman</li>
-            <li>Desain Custom Premium</li>
-            <li>SEO Advanced</li>
-            <li>Free Domain .com (1 Tahun)</li>
-            <li>Hosting Premium 1 Tahun</li>
-            <li>CMS Admin Panel</li>
-            <li>Revisi 5x</li>
-            <li>Support 3 Bulan</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary" style="width: 100%;">Pilih Paket</a>
-        </div>
-        <div class="price-card reveal">
-          <h3>Enterprise</h3>
-          <div class="price">Custom <span>/project</span></div>
-          <ul class="features">
-            <li>Website Unlimited Halaman</li>
-            <li>Aplikasi Mobile (Android/iOS)</li>
-            <li>Sistem Custom Complex</li>
-            <li>API Integration</li>
-            <li>Database Design</li>
-            <li>SSL Certificate</li>
-            <li>Revisi Unlimited</li>
-            <li>Support 1 Tahun</li>
-          </ul>
-          <a href="#contact" class="btn btn-outline" style="width: 100%;">Konsultasi</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" style="padding: 100px 0;">
-    <div class="container">
-      <div class="contact-wrapper">
-        <div class="contact-info reveal">
-          <h3>Hubungi Kami</h3>
-          <p style="color: var(--text-muted); margin-bottom: 32px;">Siap membantu mewujudkan proyek digital Anda. Hubungi kami sekarang!</p>
-          
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div>
-              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Alamat</h4>
-              <p style="color: var(--text-muted);">Jl. Imam Bonjol GG 2 No 3, Belahantengah, Mojosari, Mojokerto, Jawa Timur</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">📞</div>
-            <div>
-              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Telepon / WhatsApp</h4>
-              <a href="https://wa.me/6282111887939" target="_blank" style="color: var(--accent);">0821-1188-7939</a>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">📧</div>
-            <div>
-              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Email</h4>
-              <a href="mailto:hardinataraja@gmail.com" style="color: var(--text);">hardinataraja@gmail.com</a>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">🕒</div>
-            <div>
-              <h4 style="margin-bottom: 4px; font-family: Inter, sans-serif;">Jam Operasional</h4>
-              <p style="color: var(--text-muted);">Senin - Sabtu: 09.00 - 20.00 WIB</p>
-            </div>
-          </div>
-        </div>
-
-        <form id="contactForm" class="reveal">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="name">Nama Lengkap</label>
-              <input type="text" id="name" required placeholder="Nama Anda">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" required placeholder="email@domain.com">
-            </div>
-            <div class="form-group">
-              <label for="phone">Nomor Telepon</label>
-              <input type="tel" id="phone" placeholder="08xx-xxxx-xxxx">
-            </div>
-            <div class="form-group">
-              <label for="service">Layanan yang Diminati</label>
-              <select id="service">
-                <option value="Website Development">Website Development</option>
-                <option value="Mobile App Development">Mobile App Development</option>
-                <option value="UI/UX Design">UI/UX Design</option>
-                <option value="SEO Optimization">SEO Optimization</option>
-                <option value="Maintenance & Support">Maintenance & Support</option>
-                <option value="Lainnya">Lainnya</option>
-              </select>
-            </div>
-            <div class="form-group full">
-              <label for="message">Pesan / Detail Proyek</label>
-              <textarea id="message" rows="5" placeholder="Ceritakan kebutuhan proyek Anda..."></textarea>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Kirim ke WhatsApp</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <a href="#" class="logo" style="margin-bottom: 16px; display: block;">Musika RH<span>.</span>Studio</a>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Partner terpercaya untuk solusi digital bisnis Anda. Kami berkomitmen memberikan layanan terbaik dengan hasil berkualitas tinggi.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Layanan</h4>
-          <a href="#services">Website Development</a>
-          <a href="#services">Mobile App Development</a>
-          <a href="#services">UI/UX Design</a>
-          <a href="#services">SEO Optimization</a>
-        </div>
-        <div class="footer-col">
-          <h4>Informasi</h4>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#pricing">Harga</a>
-          <a href="#contact">Kontak</a>
-          <a href="#">Blog</a>
-        </div>
-        <div class="footer-col">
-          <h4>Kontak</h4>
-          <p style="color: var(--text-muted); margin-bottom: 12px;">Jl. Imam Bonjol GG 2 No 3<br>Belahantengah, Mojosari<br>Mojokerto, Jawa Timur</p>
-          <p style="color: var(--text);">0821-1188-7939</p>
-          <p style="color: var(--text);">hardinataraja@gmail.com</p>
-        </div>
-      </div>
-      <div class="copyright">
-        &copy; 2024 Musika RH Studio. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast">
-    <span class="toast-icon">✅</span>
+<section class="hero">
+  <div class="wrap hero-grid">
     <div>
-      <strong>Mengalihkan ke WhatsApp...</strong>
-      <p style="margin: 4px 0 0; font-size: 0.9rem; color: #cbd5e1;">Pesan Anda siap dikirim. Chat akan terbuka otomatis.</p>
+      <p class="eyebrow">Studio Pengembangan Web & Sistem Bisnis</p>
+      <h1>Sistem digital yang dibangun <em>paham</em> bisnis Anda — bukan sekadar tampil bagus.</h1>
+      <p class="lead">Website, sistem POS, dan aplikasi bisnis custom untuk UMKM dan pelaku usaha — dirancang dan dikerjakan langsung oleh developer yang memahami alur kerja, bukan sekadar menulis kode.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/6282111887939?text=Halo%20Musika%20RH%20Studio,%20saya%20tertarik%20diskusi%20project." class="btn btn-gold">Mulai Diskusi Project →</a>
+        <a href="#portfolio" class="btn btn-ghost">Lihat Portfolio</a>
+      </div>
+      <p class="trust-line">Dipercaya membangun sistem untuk <strong>sicakrabali.net</strong> · <strong>onegadgetbali.com</strong> · <strong>gisgadget.com</strong> · <strong>auroraskyservice.com</strong> & lainnya</p>
+    </div>
+
+    <div class="hero-panel">
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="num">10+</div>
+          <div class="lbl">Project Selesai</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">2+</div>
+          <div class="lbl">Tahun Pengalaman</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">4</div>
+          <div class="lbl">Kategori Sistem</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">100%</div>
+          <div class="lbl">Komunikasi Langsung</div>
+        </div>
+      </div>
+      <div class="hero-divider"></div>
+      <p class="hero-quote"><span>“</span>Bukan hanya teknis, tapi memahami alur kerja dan tujuan komersial di balik setiap fitur yang dibangun.<span>”</span></p>
     </div>
   </div>
+</section>
 
-  <script>
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-    });
+<!-- LAYANAN -->
+<section class="section" id="layanan">
+  <span class="section-index">Layanan — 01</span>
+  <div class="wrap">
+    <div class="head-block reveal">
+      <p class="eyebrow">Apa yang Kami Kerjakan</p>
+      <h2>Layanan inti, dikerjakan dengan standar yang bisa dipertanggungjawabkan.</h2>
+      <p>Bukan daftar layanan generik — setiap poin di bawah ini sudah terbukti lewat project nyata, bukan sekadar janji.</p>
+    </div>
 
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.textContent = '☰';
-      });
-    });
+    <div class="svc-grid reveal">
+      <div class="svc-card">
+        <span class="svc-num">01</span>
+        <h3>Website Development</h3>
+        <p>Company profile, sistem bisnis, landing page, dan web application — dari React JS hingga vanilla JS sesuai kebutuhan project.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">02</span>
+        <h3>Android App Development</h3>
+        <p>Aplikasi Android dengan Flutter, dari sistem POS hingga aplikasi bisnis custom dengan integrasi backend Firebase.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">03</span>
+        <h3>UI/UX Design</h3>
+        <p>Antarmuka yang menarik dan pengalaman pengguna intuitif untuk website maupun aplikasi Anda.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">04</span>
+        <h3>SEO Foundation</h3>
+        <p>Struktur semantik, performa loading, dan meta data yang rapi sejak awal pembangunan — fondasi agar website lebih mudah ditemukan.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">05</span>
+        <h3>Deployment & Integrasi</h3>
+        <p>Bantuan setup di platform terpercaya (Vercel, Firebase, dll) serta pengadaan domain atas nama Anda — kendali penuh tetap di tangan Anda.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-num">06</span>
+        <h3>Maintenance & Support</h3>
+        <p>Pemeliharaan rutin dan perbaikan bug. Respon cepat di jam kerja (09.00–20.00 WIB), komunikasi langsung tanpa perantara.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-      revealElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          el.classList.add('active');
-        }
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
+<!-- WHY -->
+<section class="section">
+  <span class="section-index">Alasan — 02</span>
+  <div class="wrap">
+    <div class="head-block reveal">
+      <p class="eyebrow">Mengapa Musika RH Studio</p>
+      <h2>Empat hal yang benar-benar membedakan cara kami bekerja.</h2>
+    </div>
 
-    // WhatsApp Integration Form Handler
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value.trim();
-      
-      if (!name || !email) {
-        alert('Harap isi nama dan email Anda.');
-        return;
-      }
-      
-      // Format pesan WhatsApp
-      const waMessage = `Halo Musika Studio, saya ingin konsultasi proyek.\n\n` +
-                        `👤 *Nama:* ${name}\n` +
-                        `📧 *Email:* ${email}\n` +
-                        `📱 *No. HP:* ${phone || '-'}\n` +
-                        `💼 *Layanan:* ${service}\n` +
-                        `📝 *Detail Proyek:* ${message || '-'}\n\n` +
-                        `Terima kasih, saya tunggu responsnya.`;
-                        
-      const phoneNumber = '6282111887939'; // Nomor WhatsApp tujuan
-      const waURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waMessage)}`;
-      
-      // Tampilkan toast
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      
-      // Buka WhatsApp setelah 1.5 detik
-      setTimeout(() => {
-        window.open(waURL, '_blank');
-        toast.classList.remove('show');
-        e.target.reset();
-      }, 1500);
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <h3>Paham Kebutuhan Bisnis</h3>
+        <p>Latar belakang di pemasaran & operasional bisnis membantu menerjemahkan kebutuhan Anda jadi solusi teknis yang tepat sasaran, bukan sekadar fitur yang ramai.</p>
+      </div>
+      <div class="why-card">
+        <h3>Komunikasi Langsung, Tanpa Perantara</h3>
+        <p>Anda bicara langsung dengan developer yang mengerjakan project Anda — update jelas, respon cepat di jam kerja, tanpa birokrasi tim besar.</p>
+      </div>
+      <div class="why-card">
+        <h3>Standar Keamanan yang Wajar</h3>
+        <p>Implementasi autentikasi & praktik keamanan standar industri (Firebase Auth, HTTPS, role-based access) di setiap sistem yang dibangun.</p>
+      </div>
+      <div class="why-card">
+        <h3>Solusi Realistis, Bukan Over-Engineering</h3>
+        <p>Fokus pada fitur yang benar-benar dibutuhkan bisnis Anda — efisien dari sisi biaya maupun waktu pengerjaan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+  <span class="section-index">Portfolio — 03</span>
+  <div class="wrap">
+    <div class="head-block reveal">
+      <p class="eyebrow">Bukti Kerja, Bukan Mockup</p>
+      <h2>Dikelompokkan per kategori sistem — coba live demo atau kunjungi project aslinya.</h2>
+      <p>Tombol Live Demo menggunakan data contoh terpisah, bukan akses ke sistem milik klien.</p>
+    </div>
+
+    <!-- POS -->
+    <div class="cat-card reveal">
+      <div class="cat-head">
+        <div>
+          <span class="cat-tag">Kategori 01</span>
+          <h3>Sistem POS (Point of Sale)</h3>
+          <p>Aplikasi kasir untuk toko fisik — dari produk sendiri hingga sistem custom untuk klien lintas industri.</p>
+        </div>
+        <a href="#demo-pos" class="btn btn-disabled btn-sm" title="Demo sedang disiapkan">Live Demo — Segera</a>
+      </div>
+      <div class="proj-list">
+        <div class="proj-item">
+          <div class="proj-thumb placeholder">K</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <h4>Kasva POS</h4>
+              <span class="proj-badge dev">Produk Sendiri</span>
+            </div>
+            <p class="proj-desc">Aplikasi kasir offline-first untuk UMKM, Flutter & Firebase. Distribusi APK langsung, 100% gratis.</p>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb placeholder">M</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <h4>POS MaanSusuk</h4>
+              <span class="proj-badge">Klien</span>
+            </div>
+            <p class="proj-desc">Sistem kasir berbasis web, React & Firebase, dengan manajemen transaksi dan pengeluaran kasir.</p>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb placeholder">R</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <h4>RM Gadget POS</h4>
+              <span class="proj-badge">Klien</span>
+            </div>
+            <p class="proj-desc">Sistem kasir 16 halaman untuk toko reparasi ponsel, dibangun dengan HTML/JS & Firebase.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cat-tech">
+        <span class="tech-pill">Flutter</span>
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">Firebase</span>
+        <span class="tech-pill">Offline-first</span>
+      </div>
+    </div>
+
+    <!-- Sistem Bisnis -->
+    <div class="cat-card reveal">
+      <div class="cat-head">
+        <div>
+          <span class="cat-tag">Kategori 02</span>
+          <h3>Sistem Bisnis & Admin Panel</h3>
+          <p>Web application custom dengan dashboard pengelolaan untuk kebutuhan operasional bisnis.</p>
+        </div>
+        <a href="#demo-sistem" class="btn btn-disabled btn-sm" title="Demo sedang disiapkan">Live Demo — Segera</a>
+      </div>
+      <div class="proj-list">
+        <div class="proj-item">
+          <div class="proj-thumb"><img src="https://thumbs2.imgbox.com/ee/01/0glCpU9W_t.png" alt="Sicakra"></div>
+          <div class="proj-body">
+            <div class="proj-top"><h4>Sicakra</h4></div>
+            <p class="proj-desc">Sistem pengelolaan & pencarian data laporan, React & Firebase, untuk penggunaan internal dan publik.</p>
+            <a href="http://sicakrabali.net" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb"><img src="https://thumbs2.imgbox.com/fd/29/O7FvkVQq_t.png" alt="AuroraSky"></div>
+          <div class="proj-body">
+            <div class="proj-top"><h4>AuroraSky</h4></div>
+            <p class="proj-desc">Service management system untuk layanan legal, visa, dan properti dengan admin panel komprehensif.</p>
+            <a href="https://auroraskyservice.com" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb placeholder">B</div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <h4>BSS Agnicom</h4>
+              <span class="proj-badge">Dalam Pengembangan</span>
+            </div>
+            <p class="proj-desc">Platform layanan & marketplace komunitas berbasis Flutter, dengan versi web pendamping.</p>
+            <span class="proj-link disabled">🚧 Web sedang disiapkan</span>
+          </div>
+        </div>
+      </div>
+      <div class="cat-tech">
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">Flutter</span>
+        <span class="tech-pill">Firebase</span>
+        <span class="tech-pill">Admin Panel</span>
+      </div>
+    </div>
+
+    <!-- Company Profile -->
+    <div class="cat-card reveal">
+      <div class="cat-head">
+        <div>
+          <span class="cat-tag">Kategori 03</span>
+          <h3>Company Profile & Katalog Produk</h3>
+          <p>Website bisnis dengan pengelolaan konten mandiri — fokus performa ringan dan navigasi sederhana.</p>
+        </div>
+        <a href="#demo-profile" class="btn btn-disabled btn-sm" title="Demo sedang disiapkan">Live Demo — Segera</a>
+      </div>
+      <div class="proj-list">
+        <div class="proj-item">
+          <div class="proj-thumb"><img src="https://thumbs2.imgbox.com/1f/4d/Fbg1xzfb_t.jpg" alt="OneGadget"></div>
+          <div class="proj-body">
+            <div class="proj-top"><h4>OneGadget</h4></div>
+            <p class="proj-desc">Website bisnis & katalog produk dengan dashboard admin, React & Firebase.</p>
+            <a href="http://onegadgetbali.com" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb"><img src="https://thumbs2.imgbox.com/f8/a1/mX0wveSk_t.jpg" alt="GIS Gadget"></div>
+          <div class="proj-body">
+            <div class="proj-top"><h4>GIS Gadget</h4></div>
+            <p class="proj-desc">Website informasi produk & layanan dengan sistem admin untuk update konten mandiri.</p>
+            <a href="http://gisgadget.com" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb"><img src="https://thumbs2.imgbox.com/db/74/K292tHbV_t.png" alt="MojosariHub"></div>
+          <div class="proj-body">
+            <div class="proj-top">
+              <h4>MojosariHub</h4>
+              <span class="proj-badge dev">Project Pribadi</span>
+            </div>
+            <p class="proj-desc">Direktori bisnis & layanan lokal untuk memetakan potensi ekonomi wilayah Mojosari.</p>
+            <a href="https://mojosarihub.com" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="cat-tech">
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">Firebase</span>
+        <span class="tech-pill">SEO</span>
+      </div>
+    </div>
+
+    <!-- Landing Page -->
+    <div class="cat-card reveal">
+      <div class="cat-head">
+        <div>
+          <span class="cat-tag">Kategori 04</span>
+          <h3>Landing Page & MVP Ordering</h3>
+          <p>Sistem pemesanan ringkas satu halaman — cocok untuk validasi ide bisnis dengan cepat.</p>
+        </div>
+        <a href="#demo-landing" class="btn btn-disabled btn-sm" title="Demo sedang disiapkan">Live Demo — Segera</a>
+      </div>
+      <div class="proj-list">
+        <div class="proj-item">
+          <div class="proj-thumb placeholder">R</div>
+          <div class="proj-body">
+            <div class="proj-top"><h4>RajaOrder</h4></div>
+            <p class="proj-desc">WhatsApp Ordering System untuk UMKM — dikembangkan sebagai product MVP.</p>
+            <a href="https://raja-kudapan.vercel.app/" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+        <div class="proj-item">
+          <div class="proj-thumb placeholder">J</div>
+          <div class="proj-body">
+            <div class="proj-top"><h4>Joe Caffe</h4></div>
+            <p class="proj-desc">Sistem pemesanan kafe berbasis QR Code meja, tanpa aplikasi tambahan.</p>
+            <a href="https://joe-caffe.vercel.app/" target="_blank" rel="noopener" class="proj-link">Visit Site ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="cat-tech">
+        <span class="tech-pill">HTML/JS</span>
+        <span class="tech-pill">QR Code</span>
+        <span class="tech-pill">WhatsApp API</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section" id="founder">
+  <span class="section-index">Founder — 04</span>
+  <div class="wrap">
+    <div class="founder reveal">
+      <div class="founder-photo">
+        <img src="https://thumbs2.imgbox.com/09/d2/DZIgpGwZ_t.jpg" alt="Musa Ababil, Founder Musika RH Studio">
+        <span class="tag">Musa Ababil</span>
+      </div>
+      <div class="founder-text">
+        <p class="eyebrow">Di Balik Musika RH Studio</p>
+        <h2>Satu developer, kendali penuh atas setiap project.</h2>
+        <p>Musika RH Studio digawangi langsung oleh Musa Ababil, developer dengan pengalaman 2+ tahun membangun sistem bisnis digital — mulai dari company profile, sistem POS, hingga aplikasi Android untuk UMKM dan pelaku usaha lintas sektor.</p>
+        <p>Sebagai studio yang dipimpin langsung oleh developer-nya sendiri, Anda berkomunikasi langsung dengan yang mengerjakan project Anda — tanpa lapisan birokrasi tim besar. Saat ini masih berjalan solo; perluasan tim akan dilakukan seiring pertumbuhan studio.</p>
+        <div class="founder-stats">
+          <div>
+            <div class="num">10+</div>
+            <div class="lbl">Project</div>
+          </div>
+          <div>
+            <div class="num">2+</div>
+            <div class="lbl">Tahun</div>
+          </div>
+          <div>
+            <div class="num">7+</div>
+            <div class="lbl">Klien Bisnis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="harga">
+  <span class="section-index">Investasi — 05</span>
+  <div class="wrap">
+    <div class="head-block reveal">
+      <p class="eyebrow">Paket Harga</p>
+      <h2>Transparan dari awal — sesuaikan dengan tahap bisnis Anda.</h2>
+      <p>Butuh sesuatu yang lebih spesifik? Paket Enterprise dapat disesuaikan sepenuhnya dengan kebutuhan Anda.</p>
+    </div>
+
+    <div class="price-grid reveal">
+      <div class="price-card">
+        <h3>Landing Page</h3>
+        <div class="price">Rp 1.250K <small>/project</small></div>
+        <ul class="price-feats">
+          <li>Website 1 Halaman</li>
+          <li>Desain Responsive</li>
+          <li>Integrasi WhatsApp / Form</li>
+          <li>Free Domain (.store/.site dll, 1th)</li>
+          <li>Hosting 1 Tahun</li>
+          <li>Revisi 1x</li>
+        </ul>
+        <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20Landing%20Page." class="btn btn-ghost" style="justify-content:center">Pilih Paket</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price">Rp 2.500K <small>/project</small></div>
+        <ul class="price-feats">
+          <li>Website 5 Halaman</li>
+          <li>Desain Responsive</li>
+          <li>SEO Foundation</li>
+          <li>Free Domain .com (1th)</li>
+          <li>Hosting 1 Tahun</li>
+          <li>Revisi 2x</li>
+        </ul>
+        <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20Starter." class="btn btn-ghost" style="justify-content:center">Pilih Paket</a>
+      </div>
+
+      <div class="price-card popular">
+        <span class="popular-flag">Paling Populer</span>
+        <h3>Business</h3>
+        <div class="price">Rp 5.000K <small>/project</small></div>
+        <ul class="price-feats">
+          <li>Website 10 Halaman</li>
+          <li>Desain Custom Premium</li>
+          <li>SEO Foundation</li>
+          <li>Free Domain .com (1th)</li>
+          <li>Hosting Premium 1 Tahun</li>
+          <li>CMS Admin Panel</li>
+          <li>Revisi 5x</li>
+          <li>Support 3 Bulan (bug fix & konten)</li>
+        </ul>
+        <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20Business." class="btn btn-gold" style="justify-content:center">Pilih Paket</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="price">Custom <small>/project</small></div>
+        <ul class="price-feats">
+          <li>Website Unlimited Halaman</li>
+          <li>Aplikasi Android (Flutter)</li>
+          <li>Sistem Custom Complex</li>
+          <li>API Integration</li>
+          <li>Database Design (Firestore)</li>
+          <li>SSL Certificate</li>
+          <li>Revisi Unlimited</li>
+          <li>Support 1 Tahun</li>
+        </ul>
+        <a href="https://wa.me/6282111887939?text=Halo,%20saya%20ingin%20konsultasi%20paket%20Enterprise." class="btn btn-ghost" style="justify-content:center">Konsultasi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="kontak">
+  <span class="section-index">Kontak — 06</span>
+  <div class="wrap">
+    <div class="head-block reveal">
+      <p class="eyebrow">Mari Berkolaborasi</p>
+      <h2>Siap mendiskusikan kebutuhan digital bisnis Anda.</h2>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div>
+        <div class="info-row">
+          <span class="info-icon">①</span>
+          <div>
+            <h4>Alamat</h4>
+            <p>Jl. Imam Bonjol GG 2 No 3, Belahantengah, Mojosari, Mojokerto, Jawa Timur</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">②</span>
+          <div>
+            <h4>WhatsApp</h4>
+            <a href="https://wa.me/6282111887939">0821-1188-7939</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">③</span>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:hardinataraja@gmail.com">hardinataraja@gmail.com</a>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon">④</span>
+          <div>
+            <h4>Jam Operasional</h4>
+            <p>Senin – Sabtu, 09.00 – 20.00 WIB</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="contactForm">
+        <div class="form-field">
+          <label for="nm">Nama Lengkap</label>
+          <input type="text" id="nm" required>
+        </div>
+        <div class="form-field">
+          <label for="ph">Nomor WhatsApp</label>
+          <input type="tel" id="ph" required>
+        </div>
+        <div class="form-field">
+          <label for="sv">Layanan yang Diminati</label>
+          <select id="sv">
+            <option>Website Development</option>
+            <option>Android App Development</option>
+            <option>UI/UX Design</option>
+            <option>SEO Foundation</option>
+            <option>Maintenance & Support</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="msg">Detail Project</label>
+          <textarea id="msg"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Kirim ke WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="#" class="logo">Musika <span>RH</span> Studio</a>
+      <a href="https://wa.me/6282111887939" class="btn btn-ghost btn-sm">Hubungi via WhatsApp</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2026 Musika RH Studio. Dipimpin oleh Musa Ababil.</span>
+      <span>Mojokerto, Jawa Timur, Indonesia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  </script>
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // nav cta show after hero
+  const navCta = document.getElementById('navCta');
+  const hero = document.querySelector('.hero');
+  const navIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      navCta.style.display = e.isIntersecting ? 'none' : 'inline-flex';
+    });
+  }, {threshold:0});
+  navIo.observe(hero);
+
+  // contact form -> whatsapp
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nm = document.getElementById('nm').value;
+    const ph = document.getElementById('ph').value;
+    const sv = document.getElementById('sv').value;
+    const msg = document.getElementById('msg').value;
+    const text = `Halo Musika RH Studio, saya ${nm} (${ph}).%0ATertarik dengan layanan: ${sv}.%0A%0ADetail project: ${msg}`;
+    window.open(`https://wa.me/6282111887939?text=${text}`, '_blank');
+  });
+</script>
+
 </body>
 </html>
-
