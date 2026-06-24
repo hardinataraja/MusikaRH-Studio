@@ -16,10 +16,13 @@
     --ivory:#F5F1E8;
     --ivory-dim:#B8B3A8;
     --grey:#8A8378;
-    --gold:#C9A227;
-    --gold-bright:#E0BC4A;
+    /* === PRIMARY COLORS UPDATED: Blue to Purple Gradient === */
+    --primary:#1359d3;
+    --primary-bright:#4A8CFF;
+    --primary-purple:#5b0dd3;
+    --primary-gradient:linear-gradient(135deg, #1359d3, #5b0dd3);
     --border:#26292F;
-    --border-bright:#3A3D44;
+    --border-bright:#2A3A5C;
 
     --serif: 'Fraunces', serif;
     --sans: 'Inter', sans-serif;
@@ -40,13 +43,13 @@
     overflow-x:hidden;
   }
 
-  /* subtle film grain / vignette for richness */
+  /* subtle film grain / vignette with blue-purple tint */
   body::before{
     content:"";
     position:fixed; inset:0;
     background:
-      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,162,39,0.08), transparent 60%),
-      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(201,162,39,0.04), transparent 60%);
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(19,89,211,0.08), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, rgba(91,13,211,0.04), transparent 60%);
     pointer-events:none;
     z-index:0;
   }
@@ -55,10 +58,13 @@
   ul{list-style:none;}
   img{max-width:100%; display:block;}
 
-  ::selection{background:var(--gold); color:var(--bg);}
+  ::selection{
+    background:var(--primary-gradient);
+    color:var(--ivory);
+  }
 
   :focus-visible{
-    outline:1.5px solid var(--gold);
+    outline:1.5px solid var(--primary);
     outline-offset:3px;
   }
 
@@ -73,7 +79,7 @@
     font-size:11px;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--primary);
     display:flex;
     align-items:center;
     gap:10px;
@@ -81,7 +87,7 @@
   .eyebrow::before{
     content:"";
     width:18px; height:1px;
-    background:var(--gold);
+    background:var(--primary-gradient);
     display:inline-block;
   }
 
@@ -127,23 +133,23 @@
     border:1px solid transparent;
     white-space:nowrap;
   }
-  .btn-gold{
-    background:var(--gold);
-    color:#16140A;
+  .btn-primary{
+    background:var(--primary-gradient);
+    color:#fff;
     font-weight:500;
   }
-  .btn-gold:hover{
-    background:var(--gold-bright);
+  .btn-primary:hover{
+    background:linear-gradient(135deg, #4A8CFF, #7B3DFF);
     transform:translateY(-2px);
-    box-shadow:0 12px 30px -10px rgba(201,162,39,.45);
+    box-shadow:0 12px 30px -10px rgba(19,89,211,.45);
   }
   .btn-ghost{
     border-color:var(--border-bright);
     color:var(--ivory);
   }
   .btn-ghost:hover{
-    border-color:var(--gold);
-    color:var(--gold);
+    border-color:var(--primary);
+    color:var(--primary-bright);
   }
   .btn-disabled{
     border:1px dashed var(--border-bright);
@@ -182,7 +188,10 @@
     gap:8px;
   }
   .logo span{
-    color:var(--gold);
+    background:var(--primary-gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
     font-style:italic;
   }
   .nav-links{
@@ -192,7 +201,7 @@
     color:var(--ivory-dim);
   }
   .nav-links a{ transition:color .25s; position:relative; }
-  .nav-links a:hover{ color:var(--gold); }
+  .nav-links a:hover{ color:var(--primary-bright); }
   .nav-toggle{ display:none; background:none; border:none; color:var(--ivory); font-size:22px; cursor:pointer; }
 
   @media(max-width:860px){
@@ -228,7 +237,10 @@
   }
   .hero h1 em{
     font-style:italic;
-    color:var(--gold);
+    background:var(--primary-gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
   }
   .hero p.lead{
     font-size:17px;
@@ -262,16 +274,16 @@
     position:absolute;
     top:-1px; left:-1px;
     width:42px; height:42px;
-    border-top:1px solid var(--gold);
-    border-left:1px solid var(--gold);
+    border-top:1px solid var(--primary);
+    border-left:1px solid var(--primary-purple);
   }
   .hero-panel::after{
     content:"";
     position:absolute;
     bottom:-1px; right:-1px;
     width:42px; height:42px;
-    border-bottom:1px solid var(--gold);
-    border-right:1px solid var(--gold);
+    border-bottom:1px solid var(--primary-purple);
+    border-right:1px solid var(--primary);
   }
   .hero-stat-row{
     display:grid;
@@ -282,7 +294,10 @@
   .hero-stat .num{
     font-family:var(--serif);
     font-size:34px;
-    color:var(--gold);
+    background:var(--primary-gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
   }
   .hero-stat .lbl{
     font-family:var(--mono);
@@ -300,7 +315,7 @@
     color:var(--ivory-dim);
     line-height:1.7;
   }
-  .hero-quote span{ color:var(--gold); }
+  .hero-quote span{ color:var(--primary-bright); }
 
   /* ---------- generic section heading ---------- */
   .head-block{
@@ -373,7 +388,7 @@
   .why-card h3::before{
     content:"";
     width:7px;height:7px;
-    background:var(--gold);
+    background:var(--primary-gradient);
     transform:rotate(45deg);
     flex-shrink:0;
   }
@@ -406,7 +421,7 @@
     font-size:10px;
     letter-spacing:.08em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--primary-bright);
     margin-bottom:6px;
     display:block;
   }
@@ -445,8 +460,11 @@
     font-family:var(--serif);
     font-style:italic;
     font-size:18px;
-    color:var(--gold);
-    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    background:var(--primary-gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    background-color:linear-gradient(160deg, var(--surface-2), var(--surface));
   }
   .proj-body{
     display:flex;
@@ -476,7 +494,7 @@
     border-radius:20px;
     white-space:nowrap;
   }
-  .proj-badge.dev{ color:var(--gold); border-color:rgba(201,162,39,.4); }
+  .proj-badge.dev{ color:var(--primary-bright); border-color:rgba(19,89,211,.4); }
   .proj-desc{ font-size:13px; color:var(--ivory-dim); line-height:1.55; }
   .proj-link{
     font-family:var(--mono);
@@ -489,7 +507,7 @@
     transition:color .25s, gap .25s;
     width:fit-content;
   }
-  .proj-link:hover{ color:var(--gold); gap:10px; }
+  .proj-link:hover{ color:var(--primary-bright); gap:10px; }
   .proj-link.disabled{ color:var(--grey); cursor:not-allowed; }
 
   .cat-tech{
@@ -530,8 +548,8 @@
   .founder-photo .tag{
     position:absolute;
     bottom:-14px; left:14px;
-    background:var(--gold);
-    color:#16140A;
+    background:var(--primary-gradient);
+    color:#fff;
     font-family:var(--mono);
     font-size:10.5px;
     padding:7px 14px;
@@ -556,7 +574,10 @@
   .founder-stats .num{
     font-family:var(--serif);
     font-size:30px;
-    color:var(--gold);
+    background:var(--primary-gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
   }
   .founder-stats .lbl{
     font-family:var(--mono);
@@ -618,17 +639,17 @@
   }
   .price-card:hover{
     transform:translateY(-6px);
-    border-color:var(--gold);
+    border-color:var(--primary);
   }
   .price-card.popular{
-    border-color:var(--gold);
+    border-color:var(--primary);
     background:linear-gradient(160deg, var(--surface-2), var(--surface));
   }
   .popular-flag{
     position:absolute;
     top:-1px; right:-1px;
-    background:var(--gold);
-    color:#16140A;
+    background:var(--primary-gradient);
+    color:#fff;
     font-family:var(--mono);
     font-size:9.5px;
     letter-spacing:.06em;
@@ -646,7 +667,10 @@
   .price-card .price{
     font-family:var(--serif);
     font-size:30px;
-    color:var(--gold);
+    background:var(--primary-gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
     margin-bottom:4px;
   }
   .price-card .price small{
@@ -669,7 +693,7 @@
   .price-feats li:first-child{ border-top:none; }
   .price-feats li::before{
     content:"—";
-    color:var(--gold);
+    color:var(--primary-bright);
     flex-shrink:0;
   }
 
@@ -690,7 +714,7 @@
   .info-icon{
     font-family:var(--mono);
     font-size:11px;
-    color:var(--gold);
+    color:var(--primary-bright);
     width:24px;
     flex-shrink:0;
     padding-top:2px;
@@ -705,7 +729,7 @@
     margin-bottom:4px;
   }
   .info-row p, .info-row a{ font-size:14px; color:var(--ivory-dim); }
-  .info-row a:hover{ color:var(--gold); }
+  .info-row a:hover{ color:var(--primary-bright); }
 
   .form-field{ margin-bottom:18px; }
   .form-field label{
@@ -734,9 +758,8 @@
   .form-field select:focus,
   .form-field textarea:focus{
     outline:none;
-    border-color:var(--gold);
+    border-color:var(--primary);
   }
-  .form-field textarea{ resize:vertical; min-height:100px; }
 
   /* ---------- FOOTER ---------- */
   footer{ padding:60px 0 40px; }
@@ -785,7 +808,7 @@
       <a href="#harga">Harga</a>
       <a href="#kontak">Kontak</a>
     </div>
-    <a href="https://wa.me/6282111887939" class="btn btn-gold btn-sm" style="display:none" id="navCta">Hubungi</a>
+    <a href="https://wa.me/6282111887939" class="btn btn-primary btn-sm" style="display:none" id="navCta">Hubungi</a>
     <button class="nav-toggle" aria-label="Menu">☰</button>
   </nav>
 </header>
@@ -797,7 +820,7 @@
       <h1>Sistem digital yang dibangun <em>paham</em> bisnis Anda — bukan sekadar tampil bagus.</h1>
       <p class="lead">Website, sistem POS, dan aplikasi bisnis custom untuk UMKM dan pelaku usaha — dirancang dan dikerjakan langsung oleh developer yang memahami alur kerja, bukan sekadar menulis kode.</p>
       <div class="hero-cta">
-        <a href="https://wa.me/6282111887939?text=Halo%20Musika%20RH%20Studio,%20saya%20tertarik%20diskusi%20project." class="btn btn-gold">Mulai Diskusi Project →</a>
+        <a href="https://wa.me/6282111887939?text=Halo%20Musika%20RH%20Studio,%20saya%20tertarik%20diskusi%20project." class="btn btn-primary">Mulai Diskusi Project →</a>
         <a href="#portfolio" class="btn btn-ghost">Lihat Portfolio</a>
       </div>
       <p class="trust-line">Dipercaya membangun sistem untuk <strong>sicakrabali.net</strong> · <strong>onegadgetbali.com</strong> · <strong>gisgadget.com</strong> · <strong>auroraskyservice.com</strong> & lainnya</p>
@@ -1182,7 +1205,7 @@
           <li>Revisi 5x</li>
           <li>Support 3 Bulan (bug fix & konten)</li>
         </ul>
-        <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20Business." class="btn btn-gold" style="justify-content:center">Pilih Paket</a>
+        <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20Business." class="btn btn-primary" style="justify-content:center">Pilih Paket</a>
       </div>
 
       <div class="price-card">
@@ -1237,7 +1260,7 @@
             <li>Free Domain & Hosting 1 Tahun</li>
           </ul>
           <p class="pos-note">*Kompatibel dengan printer thermal klien — pengadaan printer tidak termasuk.</p>
-          <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20POS%20Custom." class="btn btn-gold" style="justify-content:center">Pilih Paket</a>
+          <a href="https://wa.me/6282111887939?text=Halo,%20saya%20tertarik%20paket%20POS%20Custom." class="btn btn-primary" style="justify-content:center">Pilih Paket</a>
         </div>
       </div>
     </div>
@@ -1311,7 +1334,7 @@
           <label for="msg">Detail Project</label>
           <textarea id="msg"></textarea>
         </div>
-        <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Kirim ke WhatsApp →</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Kirim ke WhatsApp →</button>
       </form>
     </div>
   </div>
