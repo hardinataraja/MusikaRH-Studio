@@ -178,6 +178,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+    position:relative;
   }
   .logo{
     font-family:var(--serif);
@@ -207,6 +208,26 @@
   @media(max-width:860px){
     .nav-links{ display:none; }
     .nav-toggle{ display:block; }
+
+    .nav-links.open{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      background:rgba(11,12,14,0.98);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      padding:8px 0;
+    }
+    .nav-links.open a{
+      padding:16px 32px;
+      border-top:1px solid var(--border);
+      font-size:14.5px;
+    }
+    .nav-links.open a:first-child{ border-top:none; }
   }
 
   /* ---------- HERO ---------- */
@@ -1355,6 +1376,20 @@
 </footer>
 
 <script>
+  // mobile nav toggle
+  const navToggleBtn = document.querySelector('.nav-toggle');
+  const navLinksEl = document.querySelector('.nav-links');
+  navToggleBtn.addEventListener('click', function(){
+    const isOpen = navLinksEl.classList.toggle('open');
+    navToggleBtn.textContent = isOpen ? '✕' : '☰';
+  });
+  navLinksEl.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinksEl.classList.remove('open');
+      navToggleBtn.textContent = '☰';
+    });
+  });
+
   // scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
